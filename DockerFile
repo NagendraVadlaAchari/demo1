@@ -1,0 +1,4 @@
+FROM java:8
+EXPOSE 8082
+ADD /target/demoSpringBoot-1-0.0.1.jar demoSpringBoot-1-0.0.1.jar
+ENTRYPOINT ["java", "-jar", "demoSpringBoot-1-0.0.1.jar"]
