@@ -29,19 +29,35 @@ app.controller('caseCtrl', function($scope,$http) {
 	//$scope.empId= "406";
 	
 	$scope.boolhide=true;
+	$scope.boolhide1=true;
 	$scope.createCase = function() {
+
+		
 	    
 		alert("Case is going to create in ICM..!");
 //		var restURL = 'http://localhost:8081/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
 		//var restURL = 'http://localhost:8081/validate';
-			var restURL = 'http://localhost:8082/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
+			//var restURL = 'http://localhost:4004/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
+		var restURL = 'http://localhost:8082/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
 		$http.get(restURL).
 	     then(function(response) {
-	    	  console.log("response: ",response);
+	    	/*   console.log("response: ",response);
 	    	//  alert("response.data: "+response.data[0].empId);
 	    	  alert("response.data.data: "+response.data);
 	    	  $scope.boolhide=false;
+	    	  $scope.caseInfo = response.data; */
+
+	    	  alert("response.data: "+response.data[0].caseStatus);
+	//    	  alert("response.data.data: "+response.data);
+	    	  if(response.data[0].caseStatus==="Success"){
+//alert("inside the success..!");
+		    	  	 $scope.boolhide=false;}
+	    	  else{
+	    		  $scope.boolhide1=false;
+		    	  }
+
 	    	  $scope.caseInfo = response.data;
+	    	  
 	      });
 	  };
 });
@@ -81,6 +97,27 @@ app.controller('caseCtrl', function($scope,$http) {
     		    		
   		</tr>
 	</table>
+	
+	
+	  <table border = 1 ng-hide="boolhide1">
+    <tr>
+    <th> Error Details</th>
+    <th> Status </th>
+    
+    </tr>
+    
+  		<tr ng-repeat="x in caseInfo">
+			<td>{{ x.errorDetails }}</td>
+			<td>{{ x.caseStatus }}</td>
+    		    		
+  		</tr>
+	</table>
+	
+	
+	
+	
+	</div>
+   
 	</div>
    
    
