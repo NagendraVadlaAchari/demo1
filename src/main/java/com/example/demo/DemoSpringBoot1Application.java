@@ -85,7 +85,7 @@ public class DemoSpringBoot1Application {
 	 * ModelAndView("welcome", map); }
 	 */
 	
-	@PostMapping("/Name/{name}")
+	@GetMapping("/Name/{name}")
 	public String getName1(@PathVariable String name) {
 		System.out.println("getName api is called {}" + name);
 		
