@@ -38,7 +38,7 @@ app.controller('caseCtrl', function($scope,$http) {
 //		var restURL = 'http://localhost:8081/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
 		//var restURL = 'http://localhost:8081/validate';
 			//var restURL = 'http://localhost:4004/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
-		var restURL = 'http://localhost:8082/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
+		var restURL = 'http://localhost:4002/Name/'+ $scope.empName +'/empId/'+$scope.empId+'/department/'+$scope.department;
 		$http.get(restURL).
 	     then(function(response) {
 	    	/*   console.log("response: ",response);
