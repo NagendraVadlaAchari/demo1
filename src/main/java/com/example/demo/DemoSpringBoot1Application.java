@@ -36,6 +36,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @RestController
 @EnableSwagger2
+
 public class DemoSpringBoot1Application {
 
 	private static final Logger logger = LoggerFactory.getLogger(DemoSpringBoot1Application.class);
@@ -56,6 +57,7 @@ public class DemoSpringBoot1Application {
 		Subject subject = userContext.createSubject(connection, "p8admin", "mits123$", "FileNetP8WSI");
 		userContext.pushSubject(subject);
 		System.out.println("CE Connection Establised Sucessfully");
+		logger.info("CE Connection Establised Sucessfully");
 		return connection;
 	}
 
@@ -85,9 +87,11 @@ public class DemoSpringBoot1Application {
 	 * ModelAndView("welcome", map); }
 	 */
 	
+	//@PostMapping("/Name/{name}")
 	@GetMapping("/Name/{name}")
 	public String getName1(@PathVariable String name) {
 		System.out.println("getName api is called {}" + name);
+		logger.info("inside the Name URI");
 		
 		try {
 			/*
@@ -104,7 +108,7 @@ public class DemoSpringBoot1Application {
 			 * System.out.println("Properties r Updated Successfully.,,");
 			 */
 			name = "Properties r Updated Successfully..!";
-			
+			logger.info("Name URI Response"+name);
 			
 			//name="Success";
 			
@@ -193,6 +197,8 @@ public class DemoSpringBoot1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoSpringBoot1Application.class, args);
 		logger.info("inside the main method..!");
+		
+	
 	}
 
 }
